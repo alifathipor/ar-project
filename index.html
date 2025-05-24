@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AR Menu</title>
+    <title>Custom AR Menu</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.1/aframe/build/aframe-ar.min.js"></script>
     <style>
@@ -41,7 +41,7 @@
     </style>
   </head>
   <body>
-    <div id="label">قیمت: ۱۰۰,۰۰۰ تومان</div>
+    <div id="label">قیمت: 100/000 تومان</div>
     <div class="controls">
       <button onclick="prevModel()">قبلی</button>
       <button onclick="nextModel()">بعدی</button>
@@ -53,8 +53,9 @@
         <a-asset-item id="model2" src="model2.glb"></a-asset-item>
       </a-assets>
 
-      <a-marker preset="hiro">
-        <a-entity id="product" gltf-model="#model1" position="0 0 0" scale="0.5 0.5 0.5"></a-entity>
+      <!-- استفاده از مارکر دلخواه با pattern فایل -->
+      <a-marker type="pattern" url="pattern-marker.patt">
+        <a-entity id="product" gltf-model="#model1" position="0 0 0" scale="1 1 1"></a-entity>
       </a-marker>
 
       <a-entity camera></a-entity>
@@ -62,7 +63,7 @@
 
     <script>
       const models = ["#model1", "#model2"];
-      const prices = ["۱2۰,۰۰۰ تومان", "۲۰۰,۰۰۰ تومان"];
+      const prices = ["100/000 تومان", "۲۰۰,۰۰۰ تومان"];
       let current = 0;
 
       function updateModel() {
